@@ -1,1 +1,1 @@
-# Power-Platform-Utilities
+# Power Platform Utilities
