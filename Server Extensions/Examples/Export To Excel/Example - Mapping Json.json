@@ -1,0 +1,13 @@
+{
+    "GDPContribution": "GDP Contribution",
+    "Population": "Population",
+    "EmissionIntensity": "Emission Intensity",
+    "GrowthRate": "Growth Rate",
+    "Region": "Region",
+    "PerCapitaEmissions": "Per Capita Emissions",
+    "Country": "Country",
+    "Industry": "Industry",
+    "CO2Emissions": "CO2 Emissions",
+    "EmissionsUnit": "Emissions Unit",
+    "Year": "Year"
+}
