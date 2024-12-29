@@ -24,12 +24,15 @@ This custom API can be used within Power Automate to merge multiple PDF files. T
 
 ### **Inputs**
 - `meaf_docs`: An array of **Base64-encoded strings**, where each string represents a Word document to be merged.
+- `meaf_AddPageBreak`: A **boolean** parameter. If set to `true`, a page break is added between each merged document. Defaults to `true` if not provided.
 
 ### **Output**
 - `meaf_mergeddoc`: A **Base64-encoded string** representing the merged Word document.
 
 ### **Usage Example**
 This custom API can be used within Power Automate to merge multiple Word documents. The input is an array of Word documents encoded in Base64, and the output is a single merged Word document, also returned in Base64 format, which can be saved or used in subsequent actions.
+
+[Example Usage - Merge Word Docs](https://github.com/melamriD365/Power-Platform-Utilities/tree/main/Server%20Extensions/Examples/Merge%20WordDocs)
 
 [Example Usage - Merge Word Docs](https://github.com/melamriD365/Power-Platform-Utilities/tree/main/Server%20Extensions/Examples/Merge%20WordDocs)
 
@@ -46,4 +49,3 @@ This custom API can be used within Power Automate to merge multiple Word documen
 This custom API can be used within Power Automate to export data to an Excel file. The input is a JSON array containing the data and a mapping JSON to specify the Excel column headers. The output is a Base64-encoded Excel file, which can be saved or used in subsequent actions.
 
 [Example Usage - Export to Excel](https://github.com/melamriD365/Power-Platform-Utilities/tree/main/Server%20Extensions/Examples/Export%20To%20Excel)
-
