@@ -16,10 +16,8 @@ namespace PP_UTILITIES
 
             try
             {
-                // Retrieve the input parameter
                 if (context.InputParameters.Contains("meaf_docs") && context.InputParameters["meaf_docs"] is string[])
                 {
-                    // Retrieve the array of base64-encoded Word document strings
                     string[] docsBase64 = (string[])context.InputParameters["meaf_docs"];
 
                     if (docsBase64 == null || docsBase64.Length < 2)
@@ -27,13 +25,14 @@ namespace PP_UTILITIES
                         throw new InvalidPluginExecutionException("Input documents cannot be null or fewer than two.");
                     }
 
-                    // Convert base64 strings to byte arrays
+                    bool addPageBreak = true;
+                    if (context.InputParameters.Contains("meaf_AddPageBreak") && context.InputParameters["meaf_AddPageBreak"] is bool)
+                    {
+                        addPageBreak = (bool)context.InputParameters["meaf_AddPageBreak"];
+                    }
+
                     var docBytesList = docsBase64.Select(Convert.FromBase64String).ToArray();
-
-                    // Merge Word documents
-                    byte[] mergedDocBytes = MergeWordDocs(docBytesList);
-
-                    // Encode merged document as Base64 string and set output
+                    byte[] mergedDocBytes = MergeWordDocs(docBytesList, addPageBreak);
                     string mergedDocBase64 = Convert.ToBase64String(mergedDocBytes);
                     context.OutputParameters["meaf_MergedDoc"] = mergedDocBase64;
                 }
@@ -49,18 +48,17 @@ namespace PP_UTILITIES
             }
         }
 
-        private byte[] MergeWordDocs(byte[][] docs)
+        private byte[] MergeWordDocs(byte[][] docs, bool addPageBreak)
         {
-            // Initialize the destination document with the first document
             byte[] destBytes = docs[0];
             for (int i = 1; i < docs.Length; i++)
             {
-                destBytes = Merge(destBytes, docs[i]);
+                destBytes = Merge(destBytes, docs[i], addPageBreak);
             }
             return destBytes;
         }
 
-        private byte[] Merge(byte[] dest, byte[] src)
+        private byte[] Merge(byte[] dest, byte[] src, bool addPageBreak)
         {
             string altChunkId = "AltChunkId" + DateTime.Now.Ticks.ToString();
 
@@ -76,14 +74,15 @@ namespace PP_UTILITIES
                         var altPart = mainPart.AddAlternativeFormatImportPart(AlternativeFormatImportPartType.WordprocessingML, altChunkId);
                         altPart.FeedData(memoryStreamSrc);
 
-                        var altChunk = new AltChunk { Id = altChunkId };
+                        if (addPageBreak)
+                        {
+                            var pageBreak = new Paragraph(new Run(new Break { Type = BreakValues.Page }));
+                            mainPart.Document.Body.AppendChild(pageBreak);
+                        }
 
-                        // Add a page break before inserting the new document
-                        var pageBreak = new Paragraph(new Run(new Break { Type = BreakValues.Page }));
-                        mainPart.Document.Body.AppendChild(pageBreak);
+                        var altChunk = new AltChunk { Id = altChunkId };
                         mainPart.Document.Body.AppendChild(altChunk);
 
-                        // Save changes to the destination document
                         mainPart.Document.Save();
                     }
                 }
