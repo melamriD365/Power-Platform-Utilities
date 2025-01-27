@@ -88,4 +88,4 @@ Process the Response:
 
 This custom API leverages advanced Dataverse search capabilities—such as fuzzy and proximity matching—to locate, score, and return records in a single request.
 
-[Example usage - Fuzzy Search](https://github.com/melamriD365/Power-Platform-Utilities/tree/main/Server%20Extensions/Dataverse%20-%20Custom%20Apis/Fuzzy%20Search%20API%20(Dataverse))
+[Example usage - Fuzzy Search](https://github.com/melamriD365/Power-Platform-Utilities/tree/main/Server%20Extensions/Dataverse%20-%20Custom%20Apis/Fuzzy%20Search%20API%20Dataverse)
