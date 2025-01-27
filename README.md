@@ -3,9 +3,13 @@
 ## **Overview**
 
 The **Power Platform Utilities** repository provides a collection of custom APIs designed to extend the functionality of Power Platform applications. The utilities added include:
+
 - **Merging PDF files**
 - **Merging Word documents**
 - **Exporting data to Excel**
+- **Fuzzy Search in Dataverse** (New!)
+
+---
 
 ## **Merge PDFs API**
 
@@ -19,6 +23,8 @@ The **Power Platform Utilities** repository provides a collection of custom APIs
 This custom API can be used within Power Automate to merge multiple PDF files. The input is an array of PDF files encoded in Base64, and the output is a single merged PDF, also returned in Base64 format, which can be saved or used in subsequent actions.
 
 [Example Usage - Merge PDFs](https://github.com/melamriD365/Power-Platform-Utilities/tree/main/Server%20Extensions/Examples/Merge%20Pdfs)
+
+---
 
 ## **Merge Word Docs API**
 
@@ -34,7 +40,7 @@ This custom API can be used within Power Automate to merge multiple Word documen
 
 [Example Usage - Merge Word Docs](https://github.com/melamriD365/Power-Platform-Utilities/tree/main/Server%20Extensions/Examples/Merge%20WordDocs)
 
-[Example Usage - Merge Word Docs](https://github.com/melamriD365/Power-Platform-Utilities/tree/main/Server%20Extensions/Examples/Merge%20WordDocs)
+---
 
 ## **Export to Excel API**
 
@@ -49,3 +55,36 @@ This custom API can be used within Power Automate to merge multiple Word documen
 This custom API can be used within Power Automate to export data to an Excel file. The input is a JSON array containing the data and a mapping JSON to specify the Excel column headers. The output is a Base64-encoded Excel file, which can be saved or used in subsequent actions.
 
 [Example Usage - Export to Excel](https://github.com/melamriD365/Power-Platform-Utilities/tree/main/Server%20Extensions/Examples/Export%20To%20Excel)
+
+---
+
+## **Fuzzy Search API (Dataverse)**
+
+### **Inputs**
+- `meaf_entity`: A **string** representing the logical name of the Dataverse table (entity) to search (e.g., `"account"`).
+- `meaf_searchTerm`: A **string** representing the Lucene-style search term (e.g., `"\"Bruce Hodgins\"~2"` for proximity or `"Bruce~1"` for fuzziness).
+- `meaf_selectColumns`: A **string[]** listing which columns to retrieve in the search results (e.g., `["name", "createdon"]`).
+
+### **Outputs**
+- `meaf_results`: A **JSON string** representing the complete search results, including `Count`, `Value`, `Score`, `Attributes`, etc.
+- `meaf_bestscore`: A **double** representing the highest (best) relevance score among all returned records.
+- `meaf_bestrecord`: An **EntityReference** pointing to the top-scored record (if any results are found).
+
+### **Usage Example**
+1. **Create a Custom API** in Dataverse to accept the three input parameters above and return the outputs.
+2. **Invoke** the API from Power Automate or other clients with a body like:
+   ```json
+   {
+     "meaf_entity": "account",
+     "meaf_searchTerm": "MEA FUZION",
+     "meaf_selectColumns": ["name"]
+   }
+3. ** Process the Response:**
+Process the Response:
+- `meaf_results` is a JSON string containing the matched records and their details.
+- `meaf_bestscore` is a numeric score representing the top match's relevance.
+- `meaf_bestrecord` is the EntityReference of the top-scoring record if one exists.
+
+This custom API leverages advanced Dataverse search capabilities—such as fuzzy and proximity matching—to locate, score, and return records in a single request.
+
+[Example usage - Fuzzy Search](https://github.com/melamriD365/Power-Platform-Utilities/tree/main/Server%20Extensions/Examples/Export%20To%20Excel)
