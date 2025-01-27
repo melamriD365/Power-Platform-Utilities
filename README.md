@@ -60,6 +60,8 @@ This custom API can be used within Power Automate to export data to an Excel fil
 
 ## **Fuzzy Search API (Dataverse)**
 
+**Important:** Ensure that Dataverse is properly configured and the target search tables are indexed to fully utilize the capabilities of the Fuzzy Search API.
+
 ### **Inputs**
 - `meaf_entity`: A **string** representing the logical name of the Dataverse table (entity) to search (e.g., `"account"`).
 - `meaf_searchTerm`: A **string** representing the Lucene-style search term (e.g., "MEA FUZION" to search "MEA FUSION").
