@@ -22,7 +22,7 @@ The **Power Platform Utilities** repository provides a collection of custom APIs
 ### **Usage Example**
 This custom API can be used within Power Automate to merge multiple PDF files. The input is an array of PDF files encoded in Base64, and the output is a single merged PDF, also returned in Base64 format, which can be saved or used in subsequent actions.
 
-[Example Usage - Merge PDFs](https://github.com/melamriD365/Power-Platform-Utilities/tree/main/Server%20Extensions/Examples/Merge%20Pdfs)
+[Example Usage - Merge PDFs](https://github.com/melamriD365/Power-Platform-Utilities/tree/main/Server%20Extensions/Dataverse%20-%20Custom%20Apis/Merge%20Pdfs)
 
 ---
 
@@ -38,7 +38,7 @@ This custom API can be used within Power Automate to merge multiple PDF files. T
 ### **Usage Example**
 This custom API can be used within Power Automate to merge multiple Word documents. The input is an array of Word documents encoded in Base64, and the output is a single merged Word document, also returned in Base64 format, which can be saved or used in subsequent actions.
 
-[Example Usage - Merge Word Docs](https://github.com/melamriD365/Power-Platform-Utilities/tree/main/Server%20Extensions/Examples/Merge%20WordDocs)
+[Example Usage - Merge Word Docs](https://github.com/melamriD365/Power-Platform-Utilities/tree/main/Server%20Extensions/Dataverse%20-%20Custom%20Apis/Merge%20WordDocs)
 
 ---
 
@@ -54,11 +54,13 @@ This custom API can be used within Power Automate to merge multiple Word documen
 ### **Usage Example**
 This custom API can be used within Power Automate to export data to an Excel file. The input is a JSON array containing the data and a mapping JSON to specify the Excel column headers. The output is a Base64-encoded Excel file, which can be saved or used in subsequent actions.
 
-[Example Usage - Export to Excel](https://github.com/melamriD365/Power-Platform-Utilities/tree/main/Server%20Extensions/Examples/Export%20To%20Excel)
+[Example Usage - Export to Excel](https://github.com/melamriD365/Power-Platform-Utilities/tree/main/Server%20Extensions/Dataverse%20-%20Custom%20Apis/Export%20To%20Excel)
 
 ---
 
 ## **Fuzzy Search API (Dataverse)**
+
+**Important:** Ensure that Dataverse is properly configured and the target search tables are indexed to fully utilize the capabilities of the Fuzzy Search API.
 
 ### **Inputs**
 - `meaf_entity`: A **string** representing the logical name of the Dataverse table (entity) to search (e.g., `"account"`).
@@ -86,4 +88,4 @@ Process the Response:
 
 This custom API leverages advanced Dataverse search capabilities—such as fuzzy and proximity matching—to locate, score, and return records in a single request.
 
-[Example usage - Fuzzy Search](https://github.com/melamriD365/Power-Platform-Utilities/tree/main/Server%20Extensions/Examples/Export%20To%20Excel)
+[Example usage - Fuzzy Search](https://github.com/melamriD365/Power-Platform-Utilities/tree/main/Server%20Extensions/Dataverse%20-%20Custom%20Apis/Fuzzy%20Search%20API%20(Dataverse))
