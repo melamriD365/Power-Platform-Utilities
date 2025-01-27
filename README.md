@@ -22,7 +22,7 @@ The **Power Platform Utilities** repository provides a collection of custom APIs
 ### **Usage Example**
 This custom API can be used within Power Automate to merge multiple PDF files. The input is an array of PDF files encoded in Base64, and the output is a single merged PDF, also returned in Base64 format, which can be saved or used in subsequent actions.
 
-[Example Usage - Merge PDFs](https://github.com/melamriD365/Power-Platform-Utilities/tree/main/Server%20Extensions/Examples/Merge%20Pdfs)
+[Example Usage - Merge PDFs](https://github.com/melamriD365/Power-Platform-Utilities/tree/main/Server%20Extensions/Dataverse%20-%20Custom%20Apis/Merge%20Pdfs)
 
 ---
 
@@ -38,7 +38,7 @@ This custom API can be used within Power Automate to merge multiple PDF files. T
 ### **Usage Example**
 This custom API can be used within Power Automate to merge multiple Word documents. The input is an array of Word documents encoded in Base64, and the output is a single merged Word document, also returned in Base64 format, which can be saved or used in subsequent actions.
 
-[Example Usage - Merge Word Docs](https://github.com/melamriD365/Power-Platform-Utilities/tree/main/Server%20Extensions/Dataverse%20-%20Custom%20Apis/Merge%20Pdfs)
+[Example Usage - Merge Word Docs](https://github.com/melamriD365/Power-Platform-Utilities/tree/main/Server%20Extensions/Dataverse%20-%20Custom%20Apis/Merge%20WordDocs)
 
 ---
 
