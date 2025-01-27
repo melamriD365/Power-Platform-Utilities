@@ -27,7 +27,7 @@ namespace PP_UTILITIES
 
                     bool addPageBreak = true;
                     if (context.InputParameters.Contains("meaf_AddPageBreak") && context.InputParameters["meaf_AddPageBreak"] is bool)
-                    {
+                    {  
                         addPageBreak = (bool)context.InputParameters["meaf_AddPageBreak"];
                     }
 

@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Plg_ExportToExcel.cs" />
+    <Compile Include="Plg_FuzzySearch.cs" />
     <Compile Include="Plg_MergePdfs.cs" />
     <Compile Include="Plg_MergeWordDocs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
